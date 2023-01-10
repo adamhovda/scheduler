@@ -8,7 +8,8 @@ $(function () {
 
   let currentHour = dayjs().format("H");
   let currentHourId = "hour-" + currentHour;
-  console.log(currentHourId)
+
+
   
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -17,13 +18,12 @@ $(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
 
-  $(".saveBtn").click(function getId(e){
-    
+  $(".saveBtn").on("click", function getId(e){
     let $id = e.target.parentNode.id;
-    console.log($id);
     let note = $(e.target).siblings("textarea").val();
     localStorage.setItem($id, note);
   })
+
 
   //
   // TODO: Add code to apply the past, present, or future class to each time
@@ -32,6 +32,12 @@ $(function () {
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
   
+// testing code
+$("#" + currentHourId).prevAll().addClass("past");
+$("#" + currentHourId).addClass("present");
+$("#" + currentHourId).nextAll().addClass("future");
+
+
 
   
   //
@@ -44,7 +50,7 @@ $(function () {
     let key = "hour-" + i;
     let todoText = localStorage.getItem(key);
     $("#" + key).children("textarea").text(todoText);
-    console.log(key)
+
   }
 
 
@@ -53,11 +59,6 @@ $(function () {
   // TODO: Add code to display the current date in the header of the page.
   // display for time on top of page
   let now = dayjs().format("dddd, MMMM D");
-  console.log(now);
   $( "#currentDay" ).text(now);
-
-
-
-
 
 });
