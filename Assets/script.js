@@ -19,8 +19,8 @@ $(function () {
   // useful when saving the description in local storage?
 
   $(".saveBtn").on("click", function getId(e){
-    let $id = e.target.parentNode.id;
-    let note = $(e.target).siblings("textarea").val();
+    let $id = e.currentTarget.parentNode.id;
+    let note = $(e.currentTarget).siblings("textarea").val();
     localStorage.setItem($id, note);
   })
 
